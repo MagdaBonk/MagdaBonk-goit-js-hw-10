@@ -1,0 +1,1 @@
+# MagdaBonk-goit-js-hw-10
