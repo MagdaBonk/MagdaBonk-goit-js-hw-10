@@ -16,14 +16,14 @@ function inputListener(event) {
   countryInfo.innerHTML = '';
   const countryName = event.target.value;
   if (countryName.length) {
-    fetchAndRenderCountries(countryName);
+    RenderCountries(countryName);
   }
 }
 
 function createReturnButton() {
   const returnButton = document.createElement('button');
   returnButton.textContent = 'Return';
-  returnButton.classList.add('return-btn');
+  returnButton.classList.add('return-button');
   countryList.prepend(returnButton);
   returnButton.addEventListener('click', () => {
     countryList.innerHTML = '';
@@ -32,7 +32,7 @@ function createReturnButton() {
   });
 }
 
-function fetchAndRenderCountries(countryName) {
+function RenderCountries(countryName) {
   fetchCountries(countryName)
     .then(searchResult => {
       renderCountryList(searchResult);
@@ -44,8 +44,8 @@ function fetchAndRenderCountries(countryName) {
             ({ name }) => name === countryName
           );
           const newInfo = getMoreInfo(foundName);
-          const markupReplaced = newInfo.replaceAll('undefined', '');
-          countryInfo.innerHTML = markupReplaced;
+          const frontReplaced = newInfo.replaceAll('undefined', '');
+          countryInfo.innerHTML = frontReplaced;
           createReturnButton(countryName);
         })
       );
@@ -70,16 +70,16 @@ function renderCountryList(countries) {
         return `<li class='name country-list__item'><img src='${country.flags.svg}' class='name__img'><p id='countryName'>${country.name}</p></li>`;
       })
       .join(' ');
-    const markupReplaced = allCountries.replaceAll('undefined', '');
-    countryList.innerHTML = markupReplaced;
+    const frontReplaced = allCountries.replaceAll('undefined', '');
+    countryList.innerHTML = frontReplaced;
   } else {
     countryList.innerHTML = '';
     const allCountries = countries
       .map(country => getMoreInfo(country))
       .join(' ');
 
-    const markupReplaced = allCountries.replaceAll('undefined', '');
-    countryInfo.innerHTML = markupReplaced;
+    const frontReplaced = allCountries.replaceAll('undefined', '');
+    countryInfo.innerHTML = frontReplaced;
   }
 }
 

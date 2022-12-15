@@ -73,7 +73,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.return-btn {
+.return-button {
   width: 100px;
   height: 30px;
   margin-bottom: 10px;
@@ -84,8 +84,8 @@ body {
     0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-.return-btn:focus,
-.return-btn:hover {
+.return-button:focus,
+.return-button:hover {
   transform: scale(1.01);
   color: white;
   cursor: pointer;
