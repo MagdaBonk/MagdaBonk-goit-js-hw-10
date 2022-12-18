@@ -32,31 +32,39 @@ function createReturnButton() {
   });
 }
 
+const onlyLettersAndSpaces = str => {
+  return /^[A-Za-z\s]*$/.test(str);
+};
+
 function RenderCountries(countryName) {
-  fetchCountries(countryName)
-    .then(searchResult => {
-      renderCountryList(searchResult);
-      const items = document.querySelectorAll('.country-list__item');
-      items.forEach(item =>
-        item.addEventListener('click', () => {
-          const countryName = item.querySelector('#countryName').innerHTML;
-          const foundName = searchResult.find(
-            ({ name }) => name === countryName
-          );
-          const newInfo = getMoreInfo(foundName);
-          const frontReplaced = newInfo.replaceAll('undefined', '');
-          countryInfo.innerHTML = frontReplaced;
+  if (onlyLettersAndSpaces(countryName)) {
+    fetchCountries(countryName)
+      .then(searchResult => {
+        renderCountryList(searchResult);
+        const items = document.querySelectorAll('.country-list__item');
+        items.forEach(item =>
+          item.addEventListener('click', () => {
+            const countryName = item.querySelector('#countryName').innerHTML;
+            const foundName = searchResult.find(
+              ({ name }) => name === countryName
+            );
+            const newInfo = getMoreInfo(foundName);
+            const frontReplaced = newInfo.replaceAll('undefined', '');
+            countryInfo.innerHTML = frontReplaced;
+            createReturnButton(countryName);
+          })
+        );
+        if (searchResult.length === 1) {
           createReturnButton(countryName);
-        })
-      );
-      if (searchResult.length === 1) {
-        createReturnButton(countryName);
-      }
-    })
-    .catch(error => {
-      console.log(error);
-      Notify.failure('Oops, there is no country with that name');
-    });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        Notify.failure('Oops, there is no country with that name');
+      });
+  } else {
+    Notiflix.Notify.info('You can use only letters and spaces');
+  }
 }
 
 function renderCountryList(countries) {
