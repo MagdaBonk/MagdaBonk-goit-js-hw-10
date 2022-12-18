@@ -63,7 +63,7 @@ function RenderCountries(countryName) {
         Notify.failure('Oops, there is no country with that name');
       });
   } else {
-    Notiflix.Notify.info('You can use only letters and spaces');
+    Notify.info('You can use only letters and spaces');
   }
 }
 
