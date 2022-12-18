@@ -86,9 +86,15 @@ function renderCountryList(countries) {
 function getMoreInfo(country) {
   countryList.innerHTML = '';
   const parsedLanguages = country.languages.map(lang => lang.name).join(', ');
-  return `<ul class='country-info__list'>
+  return (
+    `<ul class='country-info__list'>
       <li class='name'><img src='${country.flags.svg}' class='name__img' alt='Flag of ${country.name}'><p class='country-info__name'><b>${country.name}</b></p></li>
-      <li class='country-info__item'><b>Capital:</b> ${country.capital}</li>
+      <li class='country-info__item'><b>Capital:</b> ` +
+    (country.capital !== undefined ? `${country.capital}` : '-') +
+    `</li>
       <li class='country-info__item'><b>Population:</b> ${country.population}</li>
-      <li class='country-info__item'><b>Languages:</b> ${parsedLanguages}</li></ul>`;
+      <li class='country-info__item'><b>Language` +
+    (country.languages.length > 1 ? 's' : '') +
+    `:</b> ${parsedLanguages}</li></ul>`
+  );
 }
