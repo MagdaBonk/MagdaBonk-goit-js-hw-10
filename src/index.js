@@ -22,7 +22,7 @@ function inputListener(event) {
 
 function createReturnButton() {
   const returnButton = document.createElement('button');
-  returnButton.textContent = 'Return';
+  returnButton.textContent = 'Clear results';
   returnButton.classList.add('return-button');
   countryList.prepend(returnButton);
   returnButton.addEventListener('click', () => {
