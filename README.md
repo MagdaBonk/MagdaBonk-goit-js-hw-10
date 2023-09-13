@@ -3,7 +3,7 @@ On this page you will get information about the selected country: capital, flag,
 [https://magdalenatyminska.github.io/CountryFinder/]
 
 ### Technologies
-* Project is created with:
+Project is created with:
 * HTML 5
 * SASS / CSS3
 * JavaScript
