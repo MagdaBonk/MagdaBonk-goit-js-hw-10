@@ -1,6 +1,5 @@
 ### General information
 On this page you will get information about the selected country: capital, flag, population.
-[https://magdalenatyminska.github.io/CountryFinder/]
 
 ### Technologies
 Project is created with:
